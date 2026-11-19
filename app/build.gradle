@@ -1,0 +1,12 @@
+plugins { id 'com.android.application'; id 'org.jetbrains.kotlin.android' }
+android {
+    namespace 'br.com.fitlauncher.px5'
+    compileSdk 34
+    defaultConfig { applicationId 'br.com.fitlauncher.px5'; minSdk 28; targetSdk 28; versionCode 6; versionName '0.6.0' }
+    buildTypes { release { minifyEnabled false } }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    kotlinOptions { jvmTarget = '17' }
+}
+
+// JUnit tests validate the independent OBD-II parser before publishing an APK.
+dependencies { testImplementation 'junit:junit:4.13.2' }
