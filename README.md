@@ -1,30 +1,17 @@
-# Fit Launcher PX5 — protótipo v0.6
+# Fit Launcher PX5 v0.7 — Cockpit
 
-Projeto Android independente em Kotlin para central Eonon GA2171SR / PX5, Android 9 (API 28), tela 1024×600, com tema de Honda Fit 2010 preto.
+Launcher Android independente, exclusivo para Eonon GA2171SR / PX5 (Android 9, 1024×600) e Honda Fit 2010 preto.
 
-## Recursos atuais
-- Painel horizontal com relógio, GPS e silhueta provisória do veículo.
-- Atalhos para Waze, Maps, Spotify, aplicativos e ajustes.
-- Seleção de adaptador Bluetooth clássico previamente pareado.
-- ELM327 com consultas OBD-II somente leitura: RPM, temperatura, velocidade, carga e tensão.
-- Tratamento de sensores não suportados e respostas inválidas.
-- Testes JUnit do interpretador OBD2.
+## v0.7 — redesign
+- Interface redesenhada: cabeçalho, atalhos de navegação, centro com Honda Fit realista e animação própria, painel de telemetria OBD2, dock touch.
+- Modo garagem com três temas, modo cockpit com velocímetro e conta-giros.
+- Efeito de transformação de carro para robô como **reinterpretação vetorial original** do conceito visto no APK de referência; não incorpora seus quadros/ativos proprietários.
+- Relógio/dia real, GPS real e leituras OBD2 somente quando há dados; nenhum valor fictício.
+- Atalhos para Waze, Maps, Spotify, YouTube e Car Scanner, seletor de aplicativos.
+- Bluetooth ELM327 Mini; feche Car Scanner antes. Sem escrita na ECU, sem root.
+- APK debug via GitHub Actions.
 
-## Gerar o APK no GitHub
-Acesse **Actions → Compilar Fit Launcher PX5 (APK)** e abra a execução mais recente. Se a compilação passar, baixe o artefato **FitLauncherPX5-v0.6-debug-APK**, extraia o ZIP e instale `app-debug.apk` para testes.
+## Cuidados
+Não é ainda um HOME launcher padrão; execute como aplicativo de teste. Áudio, rádio e câmera de ré dependem das integrações proprietárias da Eonon e ainda exigem teste no equipamento. Na falta de app Rádio pelo nome, utilize APPS.
 
-Também é possível acionar **Run workflow**.
-
-## Precauções
-Este é um protótipo de testes, ainda não validado na central.
-- Não configure o aplicativo como launcher HOME padrão.
-- Não altere o firmware ou a MCU.
-- Teste parado, com o veículo em local ventilado.
-- Feche o Car Scanner antes de usar a conexão OBD2.
-- A comunicação implementada usa Bluetooth clássico SPP; se o ELM327 estiver usando BLE, precisará de adaptação.
-- Recursos gráficos e código próprios; nenhum código proprietário do Rota Launcher ou Car Scanner foi incluído.
-
-## Compilação manual
-Requer JDK 17, Android SDK 34 e Gradle 8.2.1. Execute `gradle :app:testDebugUnitTest :app:assembleDebug`.
-
-O APK de debug é gerado em `app/build/outputs/apk/debug/app-debug.apk`.
+Código-fonte e arte do veículo foram criados independentemente; nenhuma imagem/asset do Rota Launcher foi copiada. O layout e o efeito de transformação usam elementos originais.
