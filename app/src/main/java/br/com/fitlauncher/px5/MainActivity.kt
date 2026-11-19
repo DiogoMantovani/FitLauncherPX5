@@ -195,11 +195,12 @@ class MainActivity : Activity(), LocationListener {
         display.invalidate()
     }
 
+    private data class Hotspot(val x: Float, val y: Float, val w: Float, val h: Float, val key: String)
+
     private inner class CockpitView : View(this@MainActivity) {
         private val p = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
         private val time = SimpleDateFormat("HH:mm", Locale("pt", "BR"))
         private val date = SimpleDateFormat("EEE, dd MMM yyyy", Locale("pt", "BR"))
-        private data class Hotspot(val x: Float, val y: Float, val w: Float, val h: Float, val key: String)
         private val touches = mutableListOf<Hotspot>()
         private var pressX = -1f
         private var pressY = -1f
@@ -389,7 +390,7 @@ class MainActivity : Activity(), LocationListener {
             text(c,label,cx,cy-r-22f,16f,soft,true,Paint.Align.CENTER)
         }
         private fun cockpit(c: Canvas) {
-            text(c,"COCKPIT / TELEMETRIA",225f,107f,24f,Color.WHITE,true,true.let { Paint.Align.LEFT })
+            text(c,"COCKPIT / TELEMETRIA",225f,107f,24f,Color.WHITE,true)
             text(c,"DADOS REAIS • ELM327 + GPS",225f,125f,11f,cyan,true)
             section(c,219f,145f,500f,326f)
             val nowSpeed = if(System.currentTimeMillis()-lastLocationAt<12000) speedGps else null
